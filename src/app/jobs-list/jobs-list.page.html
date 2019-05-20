@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>JobsList</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div>
+      <h1>{{id}}</h1>
+      <div *ngIf="id == 1"><h2>Proximité</h2>
+        <ion-list>
+          <ion-item>
+            <ion-label>Découpe de branche</ion-label>
+            <ion-button href="/job/1">GO !</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tondre le gazon</ion-label>
+            <ion-button href="/job/2">GO !</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Prommennez mon chien</ion-label>
+            <ion-button href="/job/3">GO !</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label>Aider à la préparation d'un repas de fête</ion-label>
+            <ion-button href="/job/4">GO !</ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div *ngIf="id == 2">Jardinage</div>
+      <div *ngIf="id == 3">Mes Jobs en cours
+        <ion-list>
+          <ion-item>
+            <ion-label>17.Mai.2019</ion-label>
+            <ion-button href="/job/1">Voir</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-text>1.Avrile.2019</ion-text>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div *ngIf="id == 4">Mes demandes de jobs
+        <ion-list>
+          <ion-item>
+            <ion-label>Tondre le gazon</ion-label>
+            <ion-button href="/job/2">Voir</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-text>1.Avrile.2019</ion-text>
+          </ion-item>
+        </ion-list>
+      </div>
+
+    </div>
+     <!-- <p *ngIf="{{id}} == '2'"> You .  </p> -->
+  </ion-list>
+</ion-content>

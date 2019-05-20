@@ -1,0 +1,7 @@
+{
+  "name": "Karmajob",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

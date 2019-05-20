@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Job {{id}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div>
+      <div *ngIf="id == 1"><h2>Découpe de branche</h2>
+        <ion-list>
+          <ion-item>
+            <ion-text>Il faut venir couper mes branches d'arbres</ion-text>
+          </ion-item>
+        </ion-list>
+        <ion-button>Se Proposer</ion-button>
+      </div>
+      <div *ngIf="id == 2"><h2>Découpe de branche</h2>
+        <ion-list>
+          <ion-item>
+            <ion-text>Il faut venir couper mes branches d'arbres</ion-text>
+          </ion-item>
+        </ion-list>
+        <ion-button>Se Proposer</ion-button>
+      </div>
+
+    </div>
+    <!-- <p *ngIf="{{id}} == '2'"> You .  </p> -->
+  </ion-list>
+</ion-content>
