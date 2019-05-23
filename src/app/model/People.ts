@@ -1,7 +1,7 @@
 import {last} from 'rxjs/operators';
 
 export class People {
-    constructor(public id: number, public firstname: string, public lastname: string, protected password: string,
+    constructor(public id: number, public firstname: string, public lastname: string, public password: string,
                 public karmapoints: number, public city: string, public address: string) {
         this.id = id;
         this.firstname = firstname;
