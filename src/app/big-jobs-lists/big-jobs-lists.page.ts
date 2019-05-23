@@ -10,7 +10,7 @@ export class BigJobsListsPage implements OnInit {
 private routeur: Router;
 
   constructor(router: Router) {
-    this.router = router;
+    this.routeur = router;
   }
 
   ngOnInit() {
