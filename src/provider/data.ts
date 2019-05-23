@@ -11,15 +11,16 @@ export class DataProvider {
         // init();
     }
 
+
     public init() { // hardcodded data
-        job = new Jobs('Jardinage', 'Faire du jardin');
+        job = new Jobs('hokey', 'Faire du hokey', 1, 'tomoworw', '10h');
         this.jobs.push(job);
     }
+
     public store() {
         // this.storage.set('Works', 'this.jobs');
         // this.storage.set('Works', this.jobs);
     }
-
 }
     /*
     public store(){
