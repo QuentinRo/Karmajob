@@ -1,0 +1,25 @@
+## Jobs
+{  
+  "Jobs"  {  
+    "id"    "1",
+    "title"    "Tondre le gazon",
+    "description"    "Tondre ma pelouse de 300m carré",
+    "theme"    "Jardinage",
+    "date"    "30-10-2019",
+    "duration"    "2",
+    "karmapoints"    "100",
+    "Owner"    {  
+      "id"      "1",
+      "first_name"      "Jean",
+      "last_name"      "AiPasAssez",
+      "adresse"      "Ste-croix"
+    }    "Worker"    {  
+      "id"      "2",
+      "first_name"      "Henry",
+      "last_name"      "Deathmetal",
+      "adresse"      "Rue de la poste 12"
+    }    "status"    {  
+      "id"      "1",
+      "name"      "open"
+    }
+  }
