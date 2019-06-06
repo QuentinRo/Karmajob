@@ -1,6 +1,6 @@
 import {last} from 'rxjs/operators';
 
-export class People {
+export class Users {
     constructor(public id: number, public firstname: string, public lastname: string, public password: string,
                 public karmapoints: number, public city: string, public address: string) {
         this.id = id;
