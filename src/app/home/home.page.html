@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+  <h1>liste des users</h1>
+  <div *ngFor="let user of users ">
+
+    <h2>{{user.firstname}}</h2>
+
+  </div>
+
   <div class="ion-padding">
     Page de connection
   </div>
