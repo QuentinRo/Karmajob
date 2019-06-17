@@ -8,13 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <h1>liste des users</h1>
-  <div *ngFor="let user of users ">
+  <!--
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingText="Mise à jour..."></ion-refresher-content>
+  </ion-refresher>
 
-    <h2>{{user.firstname}}</h2>
-
-  </div>
-
+  <ion-list>
+    <ion-item *ngFor="let job of data.jobs" (click)="showDetailsOf(job.id)">
+      {{ job.getName(0) }} de {{ job.size }}cm
+    </ion-item>
+  </ion-list>
+  Last update: {{ data.lastUpdateTime | date: 'dd/MM/yyyy HH:mm:ss' }}, success: {{ data.lastUpdateSuccess }}
+  -->
   <div class="ion-padding">
     Page de connection
   </div>

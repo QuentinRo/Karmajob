@@ -3,8 +3,7 @@ Mobile application for Mob1
 ## JSON exemple
 ### Job 
 ```json
-// Jobs
-{
+Job{
 	"job": {
 		"id": 1,
 		"title": "Tondre le gazon",
