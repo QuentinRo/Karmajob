@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Job} from '../model/Job';
 import {Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
-import {Users} from '../model/Users';
-import {Storage} from '@ionic/storage';
 import {DataProvider} from '../provider/data';
 
 @Component({
