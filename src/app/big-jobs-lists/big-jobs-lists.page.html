@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>BigJobsLists</ion-title>
+    <ion-title>BigJobsLisddts</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
@@ -8,22 +8,16 @@
 </ion-header>
 
 <ion-content>
+  <ion-item *ngFor="let job of data.jobs" >
+    <ion-label>{{ job.title }}</ion-label>
+    <ion-button href="/jobs-list/{{job.id}}">{{job.id}}</ion-button>
+  </ion-item>
+
   <ion-list>
     <ion-item>
-      <ion-label>Proximité</ion-label>
-      <ion-button href="/jobs-list/1">4</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Jardinage</ion-label>
-      <ion-button href="/jobs-list/2">12</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label>Mes Job en cours</ion-label>
-      <ion-button href="/jobs-list/3">1</ion-button>
-    </ion-item>
-    <ion-item>
       <ion-label>Mes demandes de jobs</ion-label>
-      <ion-button href="/jobs-list/4">1</ion-button>
+      <ion-button href="/mine/1">amoi</ion-button>
     </ion-item>
   </ion-list>
+
 </ion-content>

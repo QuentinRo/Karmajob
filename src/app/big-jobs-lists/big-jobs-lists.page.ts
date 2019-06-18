@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {DataProvider} from '../provider/data';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-big-jobs-lists',
@@ -7,13 +9,37 @@ import {Router} from '@angular/router';
   styleUrls: ['./big-jobs-lists.page.scss'],
 })
 export class BigJobsListsPage implements OnInit {
-private routeur: Router;
 
-  constructor(router: Router) {
-    this.routeur = router;
+private router: Router;
+private data: DataProvider;
+  private toastCtrl: ToastController;
+
+  constructor(router: Router, data: DataProvider, toastCtrl: ToastController) {
+    this.toastCtrl = toastCtrl
+    this.router = router
+    this.data = data
+    this.load()
   }
 
-  ngOnInit() {
+  showDetailsOf(id) {
+    this.router.navigateByUrl('/job/' + id)
   }
 
+  private load(): Promise<string> {
+    return new Promise<string> ((resolve, reject) => {
+      this.data.loadFromAPI().then(() => {
+        this.data.loadFromStorage().then(() => {
+          console.log('load.resolve');
+          resolve('Ok')
+        })
+      }).catch(() => {
+        this.data.loadFromStorage()
+        console.log('load.reject');
+        reject('Ko')
+      })
+    })
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 }
