@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'big-jobs-lists', loadChildren: './big-jobs-lists/big-jobs-lists.module#BigJobsListsPageModule' },
   { path: 'jobs-list/:id', loadChildren: './jobs-list/jobs-list.module#JobsListPageModule' },
   { path: 'job/:id', loadChildren: './job/job.module#JobPageModule' },
+  { path: 'mine/:id', loadChildren: './mine/mine.module#MinePageModule' },
+
 ];
 
 @NgModule({
