@@ -60,6 +60,7 @@ export class DataProvider {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
                     var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.owner, value.worker, value.status)
+                    console.log(value);
                     this.jobs.push(f)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -69,6 +70,7 @@ export class DataProvider {
                 console.log('loadFromStorage.resolve');
                 resolve('Ok')
             }).catch(() => {
+                console.log('marchepas');
                 console.log('loadFromStorage.reject');
                 reject('Ko')
             })
