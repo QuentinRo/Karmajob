@@ -1,9 +1,8 @@
 export class Theme {
 
-    constructor(public id: number, public name: string, public description: string) {
+    constructor(public id: number, public name: string) {
         this.id = id;
         this.name = name;
-        this.description = description;
     }
 
 }
