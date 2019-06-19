@@ -8,14 +8,14 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'details/:id', loadChildren: './details/details.module#DetailsPageModule' },
   { path: 'big-jobs-lists', loadChildren: './big-jobs-lists/big-jobs-lists.module#BigJobsListsPageModule' },
-  { path: 'jobs-list/:id', loadChildren: './jobs-list/jobs-list.module#JobsListPageModule' },
   { path: 'job/:id', loadChildren: './job/job.module#JobPageModule' },
-  { path: 'mine/:id', loadChildren: './mine/mine.module#MinePageModule' },  { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
+  { path: 'mine/:id', loadChildren: './mine/mine.module#MinePageModule' },
+  { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' },
-
-
+  { path: 'jobs-theme/:id', loadChildren: './jobs-theme/jobs-theme.module#JobsThemePageModule' },
+  { path: 'job-detail/:id', loadChildren: './job-detail/job-detail.module#JobDetailPageModule' },
 ];
 
 @NgModule({
