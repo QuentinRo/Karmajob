@@ -8,47 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <div>
-      <h1> utilisateur avec l'id {{id}}</h1>
-      <div *ngIf="id == 1"><h2>Proximité</h2>
-        <ion-list>
-          <ion-item *ngFor="let job of data.jobs" >
-            <ion-label>{{ job.title }}</ion-label>
-            <ion-button href="/jobs-list/{{job.id}}">{{job.id}}</ion-button>
-            </ion-item>
-            <!--
-              <ion-item *ngFor="let job of data.jobs" >
-              {{ job.title }} <ion-button href="/jobs-list/{{job.id}}">{{job.id}}</ion-button>
-            </ion-item>
-            -->
-        </ion-list>
-      </div>
-      <div *ngIf="id == 2">Jardinage</div>
-      <div *ngIf="id == 3">Mes Job en cours
-        <ion-list>
-          <ion-item>
-            <ion-label>17.Mai.2019</ion-label>
-            <ion-button href="/job/1">Voir</ion-button>
-          </ion-item>
-          <ion-item>
-            <ion-text>1.Avrile.2019</ion-text>
-          </ion-item>
-        </ion-list>
-      </div>
-      <div *ngIf="id == 4">Mes demandes de jobs
-        <ion-list>
-          <ion-item>
-            <ion-label>Tondre le gazon</ion-label>
-            <ion-button href="/job/2">Voir</ion-button>
-          </ion-item>
-          <ion-item>
-            <ion-text>1.Avrile.2019</ion-text>
-          </ion-item>
-        </ion-list>
-      </div>
+      <h1> Liste des jobs de {{data.users[id].firstname}} {{data.users[id].lastname}}</h1>
 
-    </div>
+  <ng-container *ngFor="let job of data.jobs" >
+    <ion-item *ngIf="job.worker == data.users[id-1].id">
+      <ion-label *ngIf="job.worker == data.users[id-1].id">{{ job.title }}</ion-label>
+      <ion-button *ngIf="job.worker == data.users[id-1].id" href="/job-detail/{{job.id}}">{{job.id}}</ion-button>
+    </ion-item>
+  </ng-container>
     <!-- <p *ngIf="{{id}} == '2'"> You .  </p> -->
-  </ion-list>
 </ion-content>
