@@ -1,12 +1,8 @@
 export class Job {
     // tslint:disable-next-line:max-line-length
 
-    protected static SInit = (() => {
-        Job.prototype.status = 1;
-    })();
-
     constructor(public id: number, public title: string, public description: string, public theme: string,
-                public date: string, public duration: number, public karmapoints: number, public owner: number, public worker: number, public status: number) {
+                public date: string, public duration: number, public karmapoints: number, public owner: number, public worker: number, public status_id: number) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -16,7 +12,7 @@ export class Job {
         this.duration = duration;
         this.owner = owner;
         this.worker = worker;
-        this.status = status;
+        this.status_id = status_id;
     }
     public getTitle() {
         console.log(this.title);
