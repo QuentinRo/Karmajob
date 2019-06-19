@@ -8,15 +8,24 @@
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let job of data.jobs" >
-    <ion-label>{{ job.title }}</ion-label>
-    <ion-button href="/jobs-list/{{job.id}}">{{job.id}}</ion-button>
+  <ion-list>
+  <ion-item *ngFor="let theme of data.themes" >
+    <ion-label>{{ theme.name }}</ion-label>
+    <ion-button href="/jobs-theme/{{theme.id}}">Go</ion-button>
   </ion-item>
+  </ion-list>
+
+<!--
+    <ion-item *ngFor="let job of data.jobs" >
+      <ion-label>{{ job.title }}</ion-label>
+      <ion-button href="/job-detail/{{job.id}}">{{job.id}}</ion-button>
+    </ion-item>
+-->
 
   <ion-list>
     <ion-item>
       <ion-label>Mes demandes de jobs</ion-label>
-      <ion-button href="/mine/1">amoi</ion-button>
+      <ion-button href="/mine/2">amoi</ion-button>
     </ion-item>
   </ion-list>
 
