@@ -14,6 +14,7 @@ export class DataProvider {
     public jobs: Job[];
     public users: User[];
     public statuses: Status[];
+    public themes: Theme[];
     private apiurl: string = 'http://127.0.0.1:8000/api/ajdqrr'
     public lastUpdateTime: Date
     public lastUpdateSuccess: boolean
@@ -26,7 +27,6 @@ export class DataProvider {
         this.jobs = []
         this.lastUpdateTime = null
         this.lastUpdateSuccess = false
-        this.getthemes();
     }
 
     public loadFromAPI(): Promise<string> {
@@ -64,7 +64,7 @@ export class DataProvider {
             this.storage.get('jobs').then((data) => {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
-                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.owner, value.worker, value.status)
+                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.owner, value.worker, value.status_id)
                     this.jobs.push(f)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -117,9 +117,6 @@ export class DataProvider {
         // tslint:disable-next-line:max-line-length
         j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardinage', '07/07/2019 08:00', 1, 50, 2, 6, 4)
         this.jobs.push(j)
-        // tslint:disable-next-line:max-line-length
-        j = new Job(5, 'Barbecue', 'J\'ai besoin d\'une personne pour s\'occuper de la viande lors de notre petite soirée barbecue', 'Cuisine', '23/06/2019 17:00', 7, 400, 5, 1, 2)
-        this.jobs.push(j)
         this.storage.set('jobs', {data: this.jobs})
 
         this.statuses = []
@@ -153,13 +150,43 @@ export class DataProvider {
         u = new User(6, 'Lara', 'croft', '1234', 'les autins')
         this.users.push(u)
         this.storage.set('users', {data: this.users})
+
+        this.themes = []
+        let t = new Theme(1,'Jardinage')
+        this.themes.push(t);
+        t = new Theme(2,'Rénovation');
+        this.themes.push(t);
+        this.storage.set('themes', {data: this.themes});
     }
 
+    /*
     public getthemes() {
         console.log('c\'est les data de bigjoblist ! ');
-        console.log(this.jobs);
-
+        this.themes = [];
+        return new Promise<any>((resolve, reject) => {
+            this.jobs.forEach((job) => {
+                let t = new Theme(job.theme);
+                this.themes.push(t);
+                if (this.themes.includes(t)) resolve(this.themes)
+            })
+            reject(this.themes + 'have been stored')
+        })
     }
+*/
+    /*
+       public find(id) {
+
+           return new Promise<any>((resolve, reject) => {
+
+               this.jobs.forEach((job) => {
+                   if (job.id == id) resolve(job)
+               })
+               reject('Job #' + id + ' not found')
+           })
+       }
+       */
+
+
 }
 
 
