@@ -10,7 +10,11 @@ const routes: Routes = [
   { path: 'big-jobs-lists', loadChildren: './big-jobs-lists/big-jobs-lists.module#BigJobsListsPageModule' },
   { path: 'jobs-list/:id', loadChildren: './jobs-list/jobs-list.module#JobsListPageModule' },
   { path: 'job/:id', loadChildren: './job/job.module#JobPageModule' },
-  { path: 'mine/:id', loadChildren: './mine/mine.module#MinePageModule' },
+  { path: 'mine/:id', loadChildren: './mine/mine.module#MinePageModule' },  { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
+  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
+  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' },
+
 
 ];
 
