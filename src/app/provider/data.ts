@@ -4,11 +4,16 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {init} from 'protractor/built/launcher';
 import {Job} from '../model/Job';
+import {User} from '../model/User';
+import {Status} from '../model/Status';
+import {Theme} from '../model/Theme';
 
 @Injectable()
 export class DataProvider {
     private storage: Storage
-    public jobs: Job[]
+    public jobs: Job[];
+    public users: User[];
+    public statuses: Status[];
     private apiurl: string = 'http://127.0.0.1:8000/api/ajdqrr'
     public lastUpdateTime: Date
     public lastUpdateSuccess: boolean
@@ -17,10 +22,11 @@ export class DataProvider {
     constructor(storage: Storage, httpClient: HttpClient) {
         this.storage = storage
         this.httpClient = httpClient
-        // this.init()
+        this.init()
         this.jobs = []
         this.lastUpdateTime = null
         this.lastUpdateSuccess = false
+        this.getthemes();
     }
 
     public loadFromAPI(): Promise<string> {
@@ -34,7 +40,6 @@ export class DataProvider {
                         this.lastUpdateTime = new Date()
                         this.storage.set('lastUpdateTime', this.lastUpdateTime).then(() => {
                             console.log('data from API stored')
-                            console.log(this.storage.get('jobs'));
                             resolve('Ok')
                         })
                     })
@@ -60,7 +65,6 @@ export class DataProvider {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
                     var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.owner, value.worker, value.status)
-                    console.log(value);
                     this.jobs.push(f)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -70,7 +74,6 @@ export class DataProvider {
                 console.log('loadFromStorage.resolve');
                 resolve('Ok')
             }).catch(() => {
-                console.log('marchepas');
                 console.log('loadFromStorage.reject');
                 reject('Ko')
             })
@@ -100,6 +103,62 @@ export class DataProvider {
                 )
             })
         })
+    }
+    public init() { // Initialize storage with hardcoded data
+        this.jobs = []
+        // tslint:disable-next-line:max-line-length
+        let j = new Job(1, 'Tondre le gazon', 'Mon gazon est trop long et il me faudrait quelqu\'un pour le tondre', 'Jardinage', '21/06/2019 14:00', 2.5, 150, 1, 2, 1)
+        this.jobs.push(j)
+        j = new Job(2, 'Laver la piscine', 'Il y à des cailloux au fond de ma piscine', 'Menage', '30/06/2019 16:00', 4, 200, 4, 2, 3)
+        this.jobs.push(j)
+        // tslint:disable-next-line:max-line-length
+        j = new Job(3, 'Réparer ma voiture', 'Ma bougie d\'allumage à quelques problèmes', 'Réparation', '19/06/2019 16:00', 9, 800, 5, 3, 5)
+        this.jobs.push(j)
+        // tslint:disable-next-line:max-line-length
+        j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardinage', '07/07/2019 08:00', 1, 50, 2, 6, 4)
+        this.jobs.push(j)
+        // tslint:disable-next-line:max-line-length
+        j = new Job(5, 'Barbecue', 'J\'ai besoin d\'une personne pour s\'occuper de la viande lors de notre petite soirée barbecue', 'Cuisine', '23/06/2019 17:00', 7, 400, 5, 1, 2)
+        this.jobs.push(j)
+        this.storage.set('jobs', {data: this.jobs})
+
+        this.statuses = []
+        let s = new Status(1, 'Ouvert', 'Open to be taken')
+        this.statuses.push(s)
+        s = new Status(2, 'Pris', 'taken, waiting to be accepted')
+        this.statuses.push(s)
+        s = new Status(3, 'Accepté', 'wait for the job to be done')
+        this.statuses.push(s)
+        s = new Status(4, 'Abandonné', 'never done')
+        this.statuses.push(s)
+        s = new Status(5, 'Fait', 'done well')
+        this.statuses.push(s)
+        s = new Status(6, 'Validé', 'job done and accepted')
+        this.statuses.push(s)
+        s = new Status(7, 'Baclé', 'bad work')
+        this.statuses.push(s)
+        this.storage.set('statuses', {data: this.statuses})
+
+        this.users = []
+        let u = new User(1, 'kent1', 'rossier', '1234', 'Rue du patissier')
+        this.users.push(u)
+        u = new User(2, 'alex', 'junod', '1234', 'Rue du centre')
+        this.users.push(u)
+        u = new User(3, 'jerem', 'gfel', '1234', 'Rue centrale')
+        this.users.push(u)
+        u = new User(4, 'kent2', 'ros2', '1234', 'Avenue du parc')
+        this.users.push(u)
+        u = new User(5, 'Blep', 'Bloup', '1234', 'Rue de chevallet')
+        this.users.push(u)
+        u = new User(6, 'Lara', 'croft', '1234', 'les autins')
+        this.users.push(u)
+        this.storage.set('users', {data: this.users})
+    }
+
+    public getthemes() {
+        console.log('c\'est les data de bigjoblist ! ');
+        console.log(this.jobs);
+
     }
 }
 

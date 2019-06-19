@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataProvider} from '../provider/data';
 import {ToastController} from '@ionic/angular';
+import {Job} from '../model/Job';
+import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'app-big-jobs-lists',
@@ -9,20 +11,19 @@ import {ToastController} from '@ionic/angular';
   styleUrls: ['./big-jobs-lists.page.scss'],
 })
 export class BigJobsListsPage implements OnInit {
-
 private router: Router;
 private data: DataProvider;
-  private toastCtrl: ToastController;
+private toastCtrl: ToastController;
 
   constructor(router: Router, data: DataProvider, toastCtrl: ToastController) {
-    this.toastCtrl = toastCtrl
-    this.router = router
-    this.data = data
-    this.load()
+    this.toastCtrl = toastCtrl;
+    this.router = router;
+    this.data = data;
+    this.load();
   }
 
   showDetailsOf(id) {
-    this.router.navigateByUrl('/job/' + id)
+    this.router.navigateByUrl('/job/' + id);
   }
 
   private load(): Promise<string> {
@@ -30,16 +31,18 @@ private data: DataProvider;
       this.data.loadFromAPI().then(() => {
         this.data.loadFromStorage().then(() => {
           console.log('load.resolve');
-          resolve('Ok')
-        })
+          resolve('Ok');
+        });
       }).catch(() => {
-        this.data.loadFromStorage()
+        this.data.loadFromStorage();
         console.log('load.reject');
-        reject('Ko')
-      })
-    })
+        reject('Ko');
+      });
+    });
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
+
+
 }
