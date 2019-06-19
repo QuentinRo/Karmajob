@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>jobs {{data.themes[id-1].name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  {{id}}
+  {{data.themes[id-1].name}}
+
+  <ng-container *ngFor="let job of data.jobs" >
+    <ion-item *ngIf="job.theme == data.themes[id-1].name">
+      <ion-label *ngIf="job.theme == data.themes[id-1].name">{{ job.title }}</ion-label>
+      <ion-button *ngIf="job.theme == data.themes[id-1].name" href="/job-detail/{{job.id}}">{{job.id}}</ion-button>
+    </ion-item>
+  </ng-container>
+</ion-content>
