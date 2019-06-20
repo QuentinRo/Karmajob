@@ -15,7 +15,7 @@ export class DataProvider {
     public users: User[];
     public statuses: Status[];
     public themes: Theme[];
-    private apiurl: string = 'http://127.0.0.1:8000/api/ajdqrr'
+    private apiurl: string = 'http://127.0.0.1:8000/api/ajddqrr'
     public lastUpdateTime: Date
     public lastUpdateSuccess: boolean
     private httpClient: HttpClient
@@ -64,7 +64,7 @@ export class DataProvider {
             this.storage.get('jobs').then((data) => {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
-                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.owner, value.worker, value.status_id)
+                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.image,  value.owner, value.worker, value.status_id)
                     this.jobs.push(f)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -107,15 +107,16 @@ export class DataProvider {
     public init() { // Initialize storage with hardcoded data
         this.jobs = []
         // tslint:disable-next-line:max-line-length
-        let j = new Job(1, 'Tondre le gazon', 'Mon gazon est trop long et il me faudrait quelqu\'un pour le tondre', 'Jardinage', '21/06/2019 14:00', 2.5, 150, 1, 2, 1)
-        this.jobs.push(j)
-        j = new Job(2, 'Laver la piscine', 'Il y à des cailloux au fond de ma piscine', 'Menage', '30/06/2019 16:00', 4, 200, 4, 2, 3)
+        let j = new Job(1, 'Tondre le gazon', 'Mon gazon est trop long et il me faudrait quelqu\'un pour le tondre', 'Jardinage', '21/06/2019 14:00', 2.5, 150, 'https://img.mobiscroll.com/demos/card_3.png', 1, 2, 1)
         this.jobs.push(j)
         // tslint:disable-next-line:max-line-length
-        j = new Job(3, 'Réparer ma voiture', 'Ma bougie d\'allumage à quelques problèmes', 'Réparation', '19/06/2019 16:00', 9, 800, 5, 3, 5)
+        j = new Job(2, 'Laver la piscine', 'Il y à des cailloux au fond de ma piscine', 'Menage', '30/06/2019 16:00', 4, 200, 'https://img.mobiscroll.com/demos/card_3.png', 4, 2, 3)
         this.jobs.push(j)
         // tslint:disable-next-line:max-line-length
-        j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardinage', '07/07/2019 08:00', 1, 50, 2, 6, 4)
+        j = new Job(3, 'Réparer ma voiture', 'Ma bougie d\'allumage à quelques problèmes', 'Réparation', '19/06/2019 16:00', 9, 800, 'https://img.mobiscroll.com/demos/card_3.png', 5, 3, 5)
+        this.jobs.push(j)
+        // tslint:disable-next-line:max-line-length
+        j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardinage', '07/07/2019 08:00', 1, 50, 'https://img.mobiscroll.com/demos/card_3.png', 2, 6, 4)
         this.jobs.push(j)
         this.storage.set('jobs', {data: this.jobs})
 
