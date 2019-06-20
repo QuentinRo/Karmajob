@@ -2,14 +2,14 @@
   <ion-toolbar>
     <ion-title>job-detail {{id}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card [button]="actionSheetController">
-    <img class="mbsc-img-thumbnail mbsc-pull-right" width="90" height="90" src="https://img.mobiscroll.com/demos/card_3.png">
+    <img class="mbsc-img-thumbnail mbsc-pull-right" width="90" height="90" src="{{data.jobs[id-1].image}}">
     <ion-card-header>
       <ion-card-subtitle align="left">{{data.jobs[id-1].date}}</ion-card-subtitle>
       <ion-card-subtitle>Karmapoints : {{data.jobs[id-1].karmapoints}}</ion-card-subtitle>
