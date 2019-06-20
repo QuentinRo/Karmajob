@@ -10,10 +10,10 @@
 </ion-header>
 
 <ion-content>
-  <!--
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content refreshingText="Mise à jour..."></ion-refresher-content>
   </ion-refresher>
+  <!--
 
   <ion-list>
     <ion-item *ngFor="let job of data.jobs" (click)="showDetailsOf(job.id)">
@@ -26,9 +26,10 @@
     Page de connection
   </div>
 
-  <ion-button routerLink="/profile">Profile</ion-button>
-
   <ion-button routerLink="/big-jobs-lists">Connecté</ion-button>
   <!-- -->
-  <ion-icon name="home" (click)="gotoprofile()">Profile</ion-icon>
+<ion-footer>
+  Last update: {{ data.lastUpdateTime | date: 'dd/MM/yyyy HH:mm:ss' }}, success: {{ data.lastUpdateSuccess }}
+</ion-footer>
+
 </ion-content>

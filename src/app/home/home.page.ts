@@ -45,11 +45,11 @@ export class HomePage {
   doRefresh(event) {
     console.log('Begin refresh');
     this.load().then(() => {
-      this.toastCtrl.create({ message: 'Rechargé!', duration: 1000 }).then((toastData)=>{ toastData.present() })
+      this.toastCtrl.create({ message: 'Rechargé!', duration: 1000 }).then((toastData) => { toastData.present()})
       event.target.complete();
       console.log('Success refresh');
     }).catch(() => {
-      this.toastCtrl.create({ message: 'Erreur de connexion!', duration: 1000 }).then((toastData)=>{ toastData.present() })
+      this.toastCtrl.create({ message: 'Erreur de connexion!', duration: 1000 }).then((toastData) => { toastData.present()})
       event.target.complete();
       console.log('Failed refresh');
     })
