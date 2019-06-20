@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>options</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="changeTheme('autumn')">Autumn</ion-button>
+  <ion-button (click)="changeTheme('night')">Dark</ion-button>
+  <ion-button (click)="changeTheme('neon')">Neon</ion-button>
+</ion-content>

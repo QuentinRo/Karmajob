@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' },
   { path: 'jobs-theme/:id', loadChildren: './jobs-theme/jobs-theme.module#JobsThemePageModule' },
   { path: 'job-detail/:id', loadChildren: './job-detail/job-detail.module#JobDetailPageModule' },  { path: 'job-create', loadChildren: './job-create/job-create.module#JobCreatePageModule' },
+  { path: 'options', loadChildren: './options/options.module#OptionsPageModule' },
 
 ];
 
