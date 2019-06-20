@@ -84,10 +84,6 @@ export class JobCreatePage implements OnInit {
         this.storage.set('jobs', {data: this.jobs})
      */
     var j = new Job( 3, this.name, this.description, this.theme , this.date, this.duration, this.karmapoints, this.image , 2 , 0 , 1);
-    
-    var f = this.storage.get('jobs')
-    this.job.push(f)
-    this.job.push(j);
     this.storage.set('jobs', {data: this.job});
     console.log(this.storage.get('jobs'));
 
