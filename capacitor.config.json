@@ -1,0 +1,7 @@
+{
+  "appId": "com.ph.karma",
+  "appName": "Karmajob",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
