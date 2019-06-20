@@ -13,7 +13,7 @@
   <ng-container *ngFor="let job of data.jobs" >
     <ion-item *ngIf="job.worker == data.users[id-1].id">
       <ion-label *ngIf="job.worker == data.users[id-1].id">{{ job.title }}</ion-label>
-      <ion-button *ngIf="job.worker == data.users[id-1].id" href="/job-detail/{{job.id}}">{{job.id}}</ion-button>
+      <ion-button *ngIf="job.worker == data.users[id-1].id" routerLink="/job-detail/{{job.id}}">{{job.id}}</ion-button>
     </ion-item>
   </ng-container>
     <!-- <p *ngIf="{{id}} == '2'"> You .  </p> -->

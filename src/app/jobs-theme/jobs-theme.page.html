@@ -15,7 +15,7 @@
   <ng-container *ngFor="let job of data.jobs" >
     <ion-item *ngIf="job.theme == data.themes[id-1].name">
       <ion-label *ngIf="job.theme == data.themes[id-1].name">{{ job.title }}</ion-label>
-      <ion-button *ngIf="job.theme == data.themes[id-1].name" href="/job-detail/{{job.id}}">{{job.id}}</ion-button>
+      <ion-button *ngIf="job.theme == data.themes[id-1].name" routerLink="/job-detail/{{job.id}}">{{job.id}}</ion-button>
     </ion-item>
   </ng-container>
 </ion-content>
