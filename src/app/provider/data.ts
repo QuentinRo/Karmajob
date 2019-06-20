@@ -15,7 +15,7 @@ export class DataProvider {
     public users: User[];
     public statuses: Status[];
     public themes: Theme[];
-    private apiurl: string = 'http://127.0.0.1:8000/api/ajddqrr'
+    private apiurl: string = 'http://127.0.0.1:8000/api/ajdqrr'
     public lastUpdateTime: Date
     public lastUpdateSuccess: boolean
     private httpClient: HttpClient
@@ -32,10 +32,31 @@ export class DataProvider {
     public loadFromAPI(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             this.jobs = []
+            this.users = []
             this.httpClient.get(this.apiurl + '/jobs').subscribe(
                 data => { // API is responding, let's do it
                     console.log(data)
                     this.storage.set('jobs', data).then(() => {
+                        this.lastUpdateSuccess = true
+                        this.lastUpdateTime = new Date()
+                        this.storage.set('lastUpdateTime', this.lastUpdateTime).then(() => {
+                            console.log('data from API stored')
+                            resolve('Ok')
+                        })
+                    })
+                },
+                err => {
+                    this.storage.get('lastUpdateTime').then((value) => {
+                        this.lastUpdateTime = value
+                    })
+                    this.lastUpdateSuccess = false
+                    console.log('Load from API failed with error ' + err.message)
+                    reject('API call failed')
+                }
+            ),
+            this.httpClient.get(this.apiurl + '/users').subscribe(
+                data => { // API is responding, save the datas into statuses
+                    this.storage.set('users', data).then(() => {
                         this.lastUpdateSuccess = true
                         this.lastUpdateTime = new Date()
                         this.storage.set('lastUpdateTime', this.lastUpdateTime).then(() => {
@@ -60,6 +81,7 @@ export class DataProvider {
     public loadFromStorage(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             this.jobs = []
+            this.users = []
             console.log('loadFromStorage')
             this.storage.get('jobs').then((data) => {
                 data.data.forEach((value) => {
@@ -76,22 +98,57 @@ export class DataProvider {
             }).catch(() => {
                 console.log('loadFromStorage.reject');
                 reject('Ko')
+            }),
+            this.storage.get('users').then((data) => {
+                data.data.forEach((value) => {
+                    //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
+                    var u = new User(value.id, value.names)
+                    this.users.push(u)
+                    /*
+                    public id: number, public title: string, public description: string, public karmapoints: number,
+                public date: string, public estimatedtime: string, public owner: number) {
+                     */
+                })
+                console.log('loadFromStorage.resolve');
+                resolve('Ok')
+            }).catch(() => {
+                console.log('loadFromStorage.reject');
+                reject('Ko')
             })
         })
     }
 
-    public find(id) {
+    // Get(id) -----------------------------------------------------------------------------
+    public getJob(id) {
         return new Promise<any>((resolve, reject) => {
             this.jobs.forEach((job) => {
-                if (job.id == id) resolve(job)
+                if (job.id === id) resolve(job)
             })
             reject('Job #' + id + ' not found')
         })
     }
 
+    public getUser(id): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            this.users.forEach((user) => {
+                if (user.id === id) resolve(user)
+            })
+            reject('User #' + id + ' not found')
+        })
+    }
+
+    public getStatus(id): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            this.statuses.forEach((status) => {
+                if (status.id == id) resolve(status)
+            })
+            reject('Status #' + id + ' not found')
+        })
+    }
+
     public updateItemOnBackend(id): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            this.find(id).then((job) => {
+            this.getJob(id).then((job) => {
                 this.httpClient
                     .put(this.apiurl + '/jobs/' + id, job).subscribe(
                     data => {
@@ -100,62 +157,53 @@ export class DataProvider {
                     err => {
                         reject('API call failed')
                     }
-                )
-            })
-        })
+                );
+            });
+        });
     }
+
+// status --------------------------------------------------------------------------------------------------------
+
+
     public init() { // Initialize storage with hardcoded data
-        this.jobs = []
-        // tslint:disable-next-line:max-line-length
-        let j = new Job(1, 'Tondre le gazon', 'Mon gazon est trop long et il me faudrait quelqu\'un pour le tondre', 'Jardinage', '21/06/2019 14:00', 2.5, 150, 'https://img.mobiscroll.com/demos/card_3.png', 1, 2, 1)
-        this.jobs.push(j)
-        // tslint:disable-next-line:max-line-length
-        j = new Job(2, 'Laver la piscine', 'Il y à des cailloux au fond de ma piscine', 'Menage', '30/06/2019 16:00', 4, 200, 'https://img.mobiscroll.com/demos/card_3.png', 4, 2, 3)
-        this.jobs.push(j)
-        // tslint:disable-next-line:max-line-length
-        j = new Job(3, 'Réparer ma voiture', 'Ma bougie d\'allumage à quelques problèmes', 'Réparation', '19/06/2019 16:00', 9, 800, 'https://img.mobiscroll.com/demos/card_3.png', 5, 3, 5)
-        this.jobs.push(j)
-        // tslint:disable-next-line:max-line-length
-        j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardinage', '07/07/2019 08:00', 1, 50, 'https://img.mobiscroll.com/demos/card_3.png', 2, 6, 4)
-        this.jobs.push(j)
-        this.storage.set('jobs', {data: this.jobs})
 
         this.statuses = []
-        let s = new Status(1, 'Ouvert', 'Open to be taken')
+        let s = new Status(1, 'Ouvert')
         this.statuses.push(s)
-        s = new Status(2, 'Pris', 'taken, waiting to be accepted')
+        s = new Status(2, 'Pris')
         this.statuses.push(s)
-        s = new Status(3, 'Accepté', 'wait for the job to be done')
+        s = new Status(3, 'Accepté')
         this.statuses.push(s)
-        s = new Status(4, 'Abandonné', 'never done')
+        s = new Status(4, 'Abandonné')
         this.statuses.push(s)
-        s = new Status(5, 'Fait', 'done well')
+        s = new Status(5, 'Fait')
         this.statuses.push(s)
-        s = new Status(6, 'Validé', 'job done and accepted')
+        s = new Status(6, 'Validé')
         this.statuses.push(s)
-        s = new Status(7, 'Baclé', 'bad work')
+        s = new Status(7, 'Baclé')
         this.statuses.push(s)
         this.storage.set('statuses', {data: this.statuses})
 
+        /*
         this.users = []
-        let u = new User(1, 'kent1', 'rossier', '1234', 'Rue du patissier')
+        let u = new User(1, 'kent1')
         this.users.push(u)
-        u = new User(2, 'alex', 'junod', '1234', 'Rue du centre')
+        u = new User(2, 'alex')
         this.users.push(u)
-        u = new User(3, 'jerem', 'gfel', '1234', 'Rue centrale')
+        u = new User(3, 'jerem')
         this.users.push(u)
-        u = new User(4, 'kent2', 'ros2', '1234', 'Avenue du parc')
+        u = new User(4, 'kent2')
         this.users.push(u)
-        u = new User(5, 'Blep', 'Bloup', '1234', 'Rue de chevallet')
+        u = new User(5, 'Blep')
         this.users.push(u)
-        u = new User(6, 'Lara', 'croft', '1234', 'les autins')
+        u = new User(6, 'Lara')
         this.users.push(u)
         this.storage.set('users', {data: this.users})
-
+        */
         this.themes = []
-        let t = new Theme(1,'Jardinage')
+        let t = new Theme(1, 'Jardinage')
         this.themes.push(t);
-        t = new Theme(2,'Rénovation');
+        t = new Theme(2, 'Rénovation');
         this.themes.push(t);
         this.storage.set('themes', {data: this.themes});
     }
