@@ -1,9 +1,9 @@
 import {last} from 'rxjs/operators';
 
 export class User {
-    constructor(public id: number, public firstname: string) {
+    constructor(public id: number, public name: string) {
         this.id = id;
-        this.firstname = firstname;
+        this.name = name;
     }
 
 }
