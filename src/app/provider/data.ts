@@ -167,6 +167,12 @@ export class DataProvider {
 
     public init() { // Initialize storage with hardcoded data
 
+        /*
+        this.jobs = []
+        let j = new  Job(1, 'Pondre un oeuf', 'Ma poule ne pond pas deuf', 'Jardinage' ,'2019-06-22 19:00:00', 4, 10, '', 1 ,0, 1)
+        this.jobs.push(j)
+        this.storage.set('jobs', {data: this.jobs} )
+
         this.statuses = []
         let s = new Status(1, 'Ouvert')
         this.statuses.push(s)
@@ -183,8 +189,8 @@ export class DataProvider {
         s = new Status(7, 'Baclé')
         this.statuses.push(s)
         this.storage.set('statuses', {data: this.statuses})
-
-        /*
+*/
+/*
         this.users = []
         let u = new User(1, 'kent1')
         this.users.push(u)
@@ -199,7 +205,7 @@ export class DataProvider {
         u = new User(6, 'Lara')
         this.users.push(u)
         this.storage.set('users', {data: this.users})
-        */
+*/
         this.themes = []
         let t = new Theme(1, 'Jardinage')
         this.themes.push(t);
@@ -207,34 +213,6 @@ export class DataProvider {
         this.themes.push(t);
         this.storage.set('themes', {data: this.themes});
     }
-
-    /*
-    public getthemes() {
-        console.log('c\'est les data de bigjoblist ! ');
-        this.themes = [];
-        return new Promise<any>((resolve, reject) => {
-            this.jobs.forEach((job) => {
-                let t = new Theme(job.theme);
-                this.themes.push(t);
-                if (this.themes.includes(t)) resolve(this.themes)
-            })
-            reject(this.themes + 'have been stored')
-        })
-    }
-*/
-    /*
-       public find(id) {
-
-           return new Promise<any>((resolve, reject) => {
-
-               this.jobs.forEach((job) => {
-                   if (job.id == id) resolve(job)
-               })
-               reject('Job #' + id + ' not found')
-           })
-       }
-       */
-
 
 }
 
