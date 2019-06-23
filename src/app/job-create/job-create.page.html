@@ -11,45 +11,46 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <div *ngIf = "image != '' ; else noimage">
-      <img class="displayed" height="150 px" width="150 px" src="{{image}}">
-    </div>
-    <ng-template #noimage>
-      <div class="noimage">
-        Aucune photo prise
+  <form (ngSubmit)="addJob()">
+    <ion-item>
+      <div *ngIf = "image != '' ; else noimage">
+        <img class="displayed" height="250 px" width="250 px" src="{{image}}">
       </div>
-    </ng-template>
-  </ion-item>
+      <ng-template #noimage>
+        <div class="noimage">
+          Aucune photo prise
+        </div>
+      </ng-template>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Nom du job</ion-label>
-    <ion-input placeholder="Nom" required="true" [(ngModel)]="name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Description du job</ion-label>
-    <ion-textarea placeholder="Description" type="text" required="true" [(ngModel)]="description"></ion-textarea>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Theme du job</ion-label>
-    <ion-input placeholder="Nom" type="text" required="true" [(ngModel)]="theme"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Date du job</ion-label>
-    <ion-input placeholder="Nom" type="date" required="true" [(ngModel)]="date"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Durée du job</ion-label>
-    <ion-input placeholder="3 heures" type="number" required="true" [(ngModel)]="duration"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Karmapoints du job</ion-label>
-    <ion-input placeholder="10" type="number" required="true" [(ngModel)]="karmapoints"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nom du job</ion-label>
+      <ion-input placeholder="Nom" required="true" [(ngModel)]="name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description du job</ion-label>
+      <ion-textarea placeholder="Description" type="text" required="true" [(ngModel)]="description" name="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Theme du job</ion-label>
+      <ion-input placeholder="Nom" type="text" required="true" [(ngModel)]="theme" name="theme"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Date du job</ion-label>
+      <ion-input placeholder="Nom" type="date" required="true" [(ngModel)]="date" name="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Durée du job</ion-label>
+      <ion-input placeholder="3 heures" type="number" required="true" [(ngModel)]="duration" name="duration"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Karmapoints du job</ion-label>
+      <ion-input placeholder="10" type="number" required="true" [(ngModel)]="karmapoints" name="karmapoints"></ion-input>
+    </ion-item>
 
   <ion-button (click)="startCamera()">Prendre une photo</ion-button>
-  <ion-button type="submit" (click)="addJob()" >Créer le Job</ion-button>
-
+  <ion-button type="submit">Créer le Job</ion-button>
+  </form>
 
 
 
