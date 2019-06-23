@@ -39,12 +39,16 @@ export class JobsThemePage implements OnInit {
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
-    this.load()
-    setTimeout(() => {
-      console.log('Async operation has ended');
+    console.log('Begin refresh');
+    this.load().then(() => {
+      this.toastCtrl.create({ message: 'Rechargé!', duration: 1000 }).then((toastData) => { toastData.present()})
       event.target.complete();
-    }, 2000);
+      console.log('Success refresh');
+    }).catch(() => {
+      this.toastCtrl.create({ message: 'Erreur de connexion!', duration: 1000 }).then((toastData) => { toastData.present()})
+      event.target.complete();
+      console.log('Failed refresh');
+    })
   }
 
   ngOnInit() {
