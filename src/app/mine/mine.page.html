@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{data.users[id].name}}</ion-title>
-    <ion-buttons slot="start">Sainte-Croix
+    <ion-title>Ma liste de Job</ion-title>
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
@@ -11,14 +11,10 @@
 </ion-header>
 
 <ion-content>
-      <h1>Ma liste de Job</h1>
-
-  <ng-container *ngFor="let job of data.jobs" >
-    <ion-item *ngIf="job.worker.id == data.users[id-1].id">
+   <ng-container *ngFor="let job of data.jobs" >
+    <ion-item *ngIf="job.worker.id == data.users[id-1].id" routerLink="/job-detail/{{job.id}}">
       <ion-label *ngIf="job.worker.id == data.users[id-1].id">{{ job.title }}</ion-label>
-      <ion-button *ngIf="job.worker.id == data.users[id-1].id" routerLink="/job-detail/{{job.id}}">{{job.id}}</ion-button>
     </ion-item>
 
   </ng-container>
-    <!-- <p *ngIf="{{id}} == '2'"> You .  </p> -->
 </ion-content>
