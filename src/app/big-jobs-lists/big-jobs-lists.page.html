@@ -12,9 +12,8 @@
 
 <ion-content>
   <ion-list>
-  <ion-item *ngFor="let theme of data.themes" >
+  <ion-item *ngFor="let theme of data.themes" routerLink="/jobs-theme/{{theme.id}}">
     <ion-label>{{ theme.name }}</ion-label>
-    <ion-button routerLink="/jobs-theme/{{theme.id}}">Go</ion-button>
   </ion-item>
   </ion-list>
 
@@ -26,9 +25,8 @@
 -->
 
   <ion-list>
-    <ion-item>
+    <ion-item routerLink="/mine/1">
       <ion-label>Mes demandes de jobs</ion-label>
-      <ion-button routerLink="/mine/1">amoi</ion-button>
     </ion-item>
   </ion-list>
 
