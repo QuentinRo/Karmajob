@@ -65,27 +65,28 @@ export class JobCreatePage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      // alert(imageData)
       this.image = (<any> window).Ionic.WebView.convertFileSrc(imageData);
     }, (err) => {
-      // Handle error
       alert('error ' + JSON.stringify(err))
     });
   }
 
   public addJob() {
-    //         let j = new Job(1, 'Tondre le gazon', 'Mon gaz', 'Jardinage', '21/06/2019 14:00', 2.5, 150, 1, 2, 1)
-    /*
-       j = new Job(4, 'Arroser les plantes', 'Je pards en vacances et mes plantes risquent de ne pas supporter tout l\'été' , 'Jardin
-       age', '07/07/2019 08:00', 1, 50, 'https://img.mobiscroll.com/demos/card_3.png', 2, 6, 4)
-        this.jobs.push(j)
-        this.storage.set('jobs', {data: this.jobs})
-     */
     var j = new Job( 3, this.name, this.description, this.theme , this.date, this.duration, this.karmapoints, this.image , 2 , 0 , 1);
-    this.storage.set('jobs', {data: this.job});
+    this.data.jobs.push(j)
+    console.log(this.data.jobs);
+    this.storage.set('jobs', {data: this.data.jobs} )
     console.log(this.storage.get('jobs'));
+
+    // valeur à Zero
+    this.image = ''
+    this.name = null
+    this.description = null
+    this.theme = null
+    this.date = null
+    this.duration = null
+    this.karmapoints = null
+    this.image = null
 
   }
 
