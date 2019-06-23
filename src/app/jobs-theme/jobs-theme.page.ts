@@ -38,6 +38,15 @@ export class JobsThemePage implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.load()
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
   }

@@ -11,14 +11,13 @@
 </ion-header>
 
 <ion-content>
-
-  {{id}}
-  {{data.themes[id-1].name}}
-
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
   <ng-container *ngFor="let job of data.jobs" >
-    <ion-item *ngIf="job.theme == data.themes[id-1].name">
+    <ion-item *ngIf="job.theme == data.themes[id-1].name" routerLink="/job-detail/{{job.id}}">
       <ion-label *ngIf="job.theme == data.themes[id-1].name">{{ job.title }}</ion-label>
-      <ion-button *ngIf="job.theme == data.themes[id-1].name" routerLink="/job-detail/{{job.id}}">{{job.id}}</ion-button>
     </ion-item>
   </ng-container>
+
 </ion-content>
