@@ -12,14 +12,13 @@
 
 <ion-content>
   <ion-card [button]="actionSheetController">
-    <img class="mbsc-img-thumbnail mbsc-pull-right" width="90" height="90" src="{{data.jobs[id-1].image}}">
+     <img class="mbsc-img-thumbnail mbsc-pull-right" width="120" height="90" src="{{data.jobs[id-1].image}}">
     <ion-card-header>
       <ion-card-subtitle align="left">{{data.jobs[id-1].date}}</ion-card-subtitle>
       <ion-card-subtitle>Karmapoints : {{data.jobs[id-1].karmapoints}}</ion-card-subtitle>
       <ion-card-subtitle>durée : {{data.jobs[id-1].duration}} heures</ion-card-subtitle>
-      <ion-card-subtitle>Statut : {{data.statuses[data.jobs[id-1].status_id].name}}</ion-card-subtitle>
-      <ion-card-subtitle>Demandeur : {{data.users[data.jobs[id-1].owner].firstname}}</ion-card-subtitle>
-      <ion-card-title>{{data.jobs[id-1].title}}</ion-card-title>
+      <ion-card-subtitle>Demandeur : {{data.jobs[id-1].owner.name}}</ion-card-subtitle>
+      <ion-card-title> {{data.jobs[id].title}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
