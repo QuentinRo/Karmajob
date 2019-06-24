@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>users-favorit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Liste des utilisateurs favoris {{id}}</h2>
+  <ion-list >
+  <ng-container *ngFor="let job of data.jobs">
+      <!-- *ngIf="job.theme == data.themes[id-1].name" -->
+    <ion-item *ngIf=" job.pleaseant > 0" >{{job.worker.name}}   {{job.pleaseant}}</ion-item>
+  </ng-container>
+  </ion-list>
+
+  <!-- test
+  <ion-list >
+    <ng-container *ngFor="let job of data.users">
+  *ngIf="job.theme == data.themes[id-1].name" 
+      <ion-item *ngIf=" job.pleaseant > 0" >{{job.worker.name}}   {{job.pleaseant}}</ion-item>
+    </ng-container>
+  </ion-list>
+  -->
+</ion-content>
