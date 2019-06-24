@@ -20,7 +20,7 @@ export class MinePage implements OnInit {
     this.router = router
     this.route = route
     this.data = data
-    this.load()
+    // this.load()
   }
 
   private load(): Promise<string> {

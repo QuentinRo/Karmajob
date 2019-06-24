@@ -21,7 +21,7 @@ export class UsersPage implements OnInit {
     this.toastCtrl = toastCtrl
     this.router = router
     this.data = data
-    this.load()
+    // this.load()
   }
 
   showDetailsOf(id) {
@@ -41,5 +41,8 @@ export class UsersPage implements OnInit {
         reject('Ko')
       })
     })
+  }
+
+  ngOnInit() {
   }
 }

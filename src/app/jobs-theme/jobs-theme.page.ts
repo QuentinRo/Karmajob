@@ -20,7 +20,7 @@ export class JobsThemePage implements OnInit {
     this.router = router;
     this.data = data;
     this.route = route;
-    this.load();
+    // this.load();
   }
 
   private load(): Promise<string> {

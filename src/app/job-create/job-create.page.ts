@@ -38,7 +38,7 @@ export class JobCreatePage implements OnInit {
     this.route = route;
     this.storage = storage;
     this.job = []
-    this.load();
+    // this.load();
   }
 
   private load(): Promise<string> {
@@ -72,7 +72,7 @@ export class JobCreatePage implements OnInit {
   }
 
   public addJob() {
-    var j = new Job( 3, this.name, this.description, this.theme , this.date, this.duration, this.karmapoints, this.image , 2 , 0 , 1);
+    var j = new Job( 3, this.name, this.description, this.theme , this.date, this.duration, this.karmapoints, this.image , 2 , 0 , 1, 0, 0, 0);
     this.data.jobs.push(j)
     console.log(this.data.jobs);
     this.storage.set('jobs', {data: this.data.jobs} )
@@ -90,17 +90,8 @@ export class JobCreatePage implements OnInit {
 
   }
 
-  /*
 
-  public addNewRecipe(){
-    var r = new Recipe(this.id,this.name,this.image,this.kcal,this.time)
-    this.recipes.push(r)
-    this.storage.set('myRecipes',this.recipes)
-    this.id++
-    console.log("Added a new recipe")
-    this.router.navigateByUrl('home')
-  }
-   */
+
   ngOnInit() {
   }
 }
