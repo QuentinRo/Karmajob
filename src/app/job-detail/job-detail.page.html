@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>job-detail {{id}}</ion-title>
+    <ion-title>job-detail </ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -18,7 +18,7 @@
       <ion-card-subtitle>Karmapoints : {{data.jobs[id-1].karmapoints}}</ion-card-subtitle>
       <ion-card-subtitle>durée : {{data.jobs[id-1].duration}} heures</ion-card-subtitle>
       <ion-card-subtitle>Demandeur : {{data.jobs[id-1].owner.name}}</ion-card-subtitle>
-      <ion-card-title> {{data.jobs[id].title}}</ion-card-title>
+      <ion-card-title> {{data.jobs[id-1].title}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -27,6 +27,22 @@
     <ion-card ></ion-card>
   </ion-card>
 
-
+    <form (ngSubmit)="addStars()">
+        <ng-container>
+            <ion-item>
+                <ion-label position="floating">Rapidité d'execution</ion-label>
+                <ion-input placeholder="1 - 5" required="true" type="number" [(ngModel)]="speed" name="speed"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Qualité du travai</ion-label>
+                <ion-input placeholder="1 - 5" required="true" type="number" [(ngModel)]="quality" name="quality"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Sympathique</ion-label>
+                <ion-input placeholder="1 - 5" required="true" type="number" [(ngModel)]="pleasante" name="pleasante"></ion-input>
+            </ion-item>
+            <ion-button type="submit">Notez le job</ion-button>
+        </ng-container>
+    </form>
 
 </ion-content>
