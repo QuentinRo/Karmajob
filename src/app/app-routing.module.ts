@@ -15,9 +15,13 @@ const routes: Routes = [
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule' },
   { path: 'jobs-theme/:id', loadChildren: './jobs-theme/jobs-theme.module#JobsThemePageModule' },
-  { path: 'job-detail/:id', loadChildren: './job-detail/job-detail.module#JobDetailPageModule' },  { path: 'job-create', loadChildren: './job-create/job-create.module#JobCreatePageModule' },
+  { path: 'job-detail/:id', loadChildren: './job-detail/job-detail.module#JobDetailPageModule' },
+  { path: 'job-create', loadChildren: './job-create/job-create.module#JobCreatePageModule' },
   { path: 'options', loadChildren: './options/options.module#OptionsPageModule' },
   { path: 'users', loadChildren: './users/users.module#UsersPageModule' },
+  { path: 'myproposed-job/:id', loadChildren: './myproposed-job/myproposed-job.module#MyproposedJobPageModule' },
+  { path: 'users-favorit/:id', loadChildren: './users-favorit/users-favorit.module#UsersFavoritPageModule' },
+
 
 ];
 
