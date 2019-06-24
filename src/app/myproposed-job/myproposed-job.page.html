@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>myproposed-job</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let job of data.jobs" >
+    <ion-item *ngIf="job.owner.id == data.users[id-1].id" routerLink="/job-detail/{{job.id}}">
+      <ion-label *ngIf="job.owner.id == data.users[id-1].id">{{ job.title }}</ion-label>
+    </ion-item>
+  </ng-container>
+</ion-content>
