@@ -86,7 +86,7 @@ export class DataProvider {
             this.storage.get('jobs').then((data) => {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
-                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.image,  value.owner, value.worker, value.status_id)
+                    var f = new Job(value.id, value.title, value.description, value.theme, value.date, value.duration, value.karmapoints, value.image,  value.owner, value.worker, value.status_id, 0, 0, 0)
                     this.jobs.push(f)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -102,7 +102,7 @@ export class DataProvider {
             this.storage.get('users').then((data) => {
                 data.data.forEach((value) => {
                     //   var j = new Job(value.id, value.title, value.description, value.theme, value.date, value.karmapoints, value.owner, value.worker, value.status_id)
-                    var u = new User(value.id, value.names)
+                    var u = new User(value.id, value.name)
                     this.users.push(u)
                     /*
                     public id: number, public title: string, public description: string, public karmapoints: number,
@@ -212,6 +212,9 @@ export class DataProvider {
         t = new Theme(2, 'Rénovation');
         this.themes.push(t);
         this.storage.set('themes', {data: this.themes});
+
+        let id = 15
+        this.storage.set('id', {data: id})
     }
 
 }
